@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace APanel.Data
 {
-    public class TestData
+    public class FileManagerData
     {
         public string? Icon { get; set; }
 

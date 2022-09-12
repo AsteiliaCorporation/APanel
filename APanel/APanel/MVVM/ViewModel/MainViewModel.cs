@@ -18,7 +18,6 @@ namespace APanel.MVVM.ViewModel
         public NetworkViewModel networkVM;
         public StartupViewModel startupVM;
         public SettingsViewModel settingsVM;
-        public Test testVM;
 
         public MainViewModel()
         {
@@ -32,7 +31,6 @@ namespace APanel.MVVM.ViewModel
             networkVM = new NetworkViewModel();
             startupVM = new StartupViewModel();
             settingsVM = new SettingsViewModel();
-            testVM = new Test();
         }
     }
 }

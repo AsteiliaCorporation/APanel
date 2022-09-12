@@ -36,8 +36,5 @@
         <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
             <v:SettingsView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:Test}">
-            <v:TestView/>
-        </DataTemplate>
     </Application.Resources>
 </Application>

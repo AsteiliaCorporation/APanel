@@ -8,50 +8,118 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Margin="16 32">
     <Grid>
-        <ScrollViewer Margin="128 0">
-            <ListView HorizontalContentAlignment="Stretch">
-                <Button Height="36"
-                        Background="DimGray"
-                        HorizontalContentAlignment="Stretch"
-                        VerticalContentAlignment="Stretch"
-                        Padding="16 0">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="24"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="24"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
-                                   Text="[  ]"
-                                   Foreground="#ffffff"
-                                   VerticalAlignment="Center">
-                            
-                        </TextBlock>
-                        <TextBlock Grid.Column="1"
-                                   Text="bskyblock_world"
-                                   Foreground="#ffffff"
-                                   VerticalAlignment="Center">
-
-                        </TextBlock>
-                        <TextBlock Grid.Column="3"
-                                   Text="02/12/2023 | 04:12 PM"
-                                   Foreground="#ffffff"
-                                   VerticalAlignment="Center"
-                                   TextAlignment="Right">
-
-                        </TextBlock>
-                        <TextBlock Grid.Column="4"
-                                   Text=":"
-                                   Foreground="#ffffff"
-                                   VerticalAlignment="Center"
-                                   TextAlignment="Center">
-
-                        </TextBlock>
-                    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ItemsControl Grid.Row="0"
+                      Margin="128 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Content="📁 /home"
+                        Command="{Binding ReturnHomeCommand}"
+                        DockPanel.Dock="Bottom"
+                        HorizontalContentAlignment="Left"
+                        Foreground="#ffffff"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Grid.Column="0">
                 </Button>
-            </ListView>
-        </ScrollViewer>
+                <Button Content="/plugins"
+                        Command="{Binding ReturnHomeCommand}"
+                        DockPanel.Dock="Bottom"
+                        HorizontalContentAlignment="Left"
+                        Foreground="#ffffff"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Grid.Column="1">
+                </Button>
+            </Grid>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding Data}"
+                      Margin="128 0"
+                      Grid.Row="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border  BorderBrush="Black"
+                             Background="Gainsboro"
+                             BorderThickness="0.5"
+                             Margin="2">
+                        <Button Height="36"
+                                Background="DimGray"
+                                HorizontalContentAlignment="Stretch"
+                                VerticalContentAlignment="Stretch"
+                                Padding="16 0"
+                                Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="24"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="24"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding Icon}"
+                                           Foreground="#ffffff"
+                                           VerticalAlignment="Center">
+                                </TextBlock>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding Name}"
+                                           Foreground="#ffffff"
+                                           VerticalAlignment="Center">
+                                </TextBlock>
+                                <TextBlock Grid.Column="3"
+                                           Text="{Binding Size}"
+                                           Foreground="#ffffff"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Right">
+                                </TextBlock>
+                                <TextBlock Grid.Column="4"
+                                           Text="{Binding ModificationTime}"
+                                           Foreground="#ffffff"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center">
+                                </TextBlock>
+                                <Button Grid.Column="5"
+                                        Width="64"
+                                        Height="28"
+                                        Content=":"
+                                        BorderThickness="0"
+                                        Background="Transparent"
+                                        Foreground="#ffffff"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Command="{Binding DataContext.MoreCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}">
+                                </Button>
+                            </Grid>
+                        </Button>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="ItemsControl">
+                    <ScrollViewer CanContentScroll="True"
+                                  VerticalScrollBarVisibility="Auto">
+                        <ItemsPresenter/>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </Grid>
 </UserControl>

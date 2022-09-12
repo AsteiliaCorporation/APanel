@@ -15,8 +15,8 @@ namespace APanel.MVVM.View
             InitializeComponent();
 
             mainVM = new MainViewModel();
-            //contentControl.Content = mainVM.consoleVM;
-            contentControl.Content = mainVM.testVM;
+            //- contentControl.Content = mainVM.consoleVM;
+            contentControl.Content = mainVM.fileManagerVM;
         }
 
         private void btnConsole_Click(object sender, System.Windows.RoutedEventArgs e)
