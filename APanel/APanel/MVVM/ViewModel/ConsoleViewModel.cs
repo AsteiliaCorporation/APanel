@@ -3,7 +3,7 @@ using APanel.Helper;
 
 namespace APanel.MVVM.ViewModel
 {
-    internal class ConsoleViewModel
+    internal class ConsoleViewModel : BaseViewModel
     {
         public ICommand StartServerCommand;
         public ICommand RestartServerCommand;

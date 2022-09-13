@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace APanel.MVVM.ViewModel
 {
-    internal class PrimaryViewModel
+    internal class PrimaryViewModel : BaseViewModel
     {
+        public BaseViewModel CurrentViewModel { get; }
+
         public PrimaryViewModel()
         {
-
+            CurrentViewModel = new ConsoleViewModel();
         }
     }
 }

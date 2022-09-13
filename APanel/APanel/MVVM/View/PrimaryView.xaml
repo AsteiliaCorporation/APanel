@@ -146,7 +146,7 @@
         </Grid>
         <Grid Grid.Row="2"
               Background="#272822">
-            <ContentControl x:Name="contentControl"/>
+            <ContentControl Content="{Binding CurrentViewModel}"/>
         </Grid>
     </Grid>
 </UserControl>

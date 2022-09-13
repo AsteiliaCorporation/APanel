@@ -12,6 +12,6 @@
         Background="#1f1f1f"
         ResizeMode="CanResizeWithGrip">
     <Grid>
-        <ContentControl x:Name="contentControl"/>
+        <ContentControl Content="{Binding PrimaryViewModel}"/>
     </Grid>
 </Window>

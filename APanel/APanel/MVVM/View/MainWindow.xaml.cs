@@ -8,14 +8,9 @@ namespace APanel.MVVM.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly MainViewModel mainVM;
-
         public MainWindow()
         {
             InitializeComponent();
-
-            mainVM = new MainViewModel();
-            contentControl.Content = mainVM.primaryVM;
         }
     }
 }

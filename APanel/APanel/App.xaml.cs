@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
+using APanel.MVVM.View;
+using APanel.MVVM.ViewModel;
 
 namespace APanel
 {
@@ -11,14 +11,14 @@ namespace APanel
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel()
+            };
 
-            LiveCharts.Configure(config =>
-                config
-                .AddSkiaSharp()
-                .AddDefaultMappers()
-                .AddDarkTheme()
-            );
+            MainWindow.Show();
+
+            base.OnStartup(e);
         }
     }
 }

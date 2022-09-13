@@ -14,7 +14,7 @@ namespace APanel.MVVM.Model
 
         public ConsoleModel()
         {
-            startupModel = new StartupModel();
+            startupModel = new StartupModel("", "", "");
         }
     }
 }
