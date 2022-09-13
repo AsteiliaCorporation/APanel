@@ -15,20 +15,20 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"></ColumnDefinition>
-            <ColumnDefinition Width="75*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50*"></RowDefinition>
-                <RowDefinition Height="50*"></RowDefinition>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"></RowDefinition>
-                    <RowDefinition Height="50*"></RowDefinition>
-                    <RowDefinition Height="16"></RowDefinition>
-                    <RowDefinition Height="20*"></RowDefinition>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="20*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0"
                       Background="#090909">
@@ -36,56 +36,46 @@
                                Padding="8"
                                Foreground="#ffffff"
                                Text="☰ Minecraft"
-                               VerticalAlignment="Center">
-
-                    </TextBlock>
+                               VerticalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Row="1"
                       Background="#141413">
                     <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0"
                                Foreground="#ffffff"
                                Text="🔶 STARTING"
                                VerticalAlignment="Center"
-                               Padding="8">
-                        
-                    </TextBlock>
+                               Padding="8"/>
                     <TextBlock Grid.Row="1"
                                Foreground="#ffffff"
                                Text="🔶 211.19%"
                                VerticalAlignment="Center"
-                               Padding="8">
-
-                    </TextBlock>
+                               Padding="8"/>
                     <TextBlock Grid.Row="2"
                                Foreground="#ffffff"
                                Text="🔶 307.02 MB / 512 MB"
                                VerticalAlignment="Center"
-                               Padding="8">
-
-                    </TextBlock>
+                               Padding="8"/>
                     <TextBlock Grid.Row="3"
                                Foreground="#ffffff"
                                Text="🔶 184.91 MB / 200 MB"
                                VerticalAlignment="Center"
-                               Padding="8">
-
-                    </TextBlock>
+                               Padding="8"/>
                 </Grid>
                 <Grid Grid.Row="3"
                       Background="#141413"
                       Margin="8">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="16"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="16"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0"
                             Background="Transparent"
@@ -94,9 +84,7 @@
                             Content="START"
                             FontSize="10"
                             Name="btnStart"
-                            Click="btnStart_Click">
-                        
-                    </Button>
+                            Command="{Binding StartServerCommand}"/>
                     <Button Grid.Column="2"
                             Background="Transparent"
                             Foreground="#ffffff"
@@ -104,9 +92,7 @@
                             Content="RESTART"
                             FontSize="10"
                             Name="btnRestart"
-                            Click="btnRestart_Click">
-
-                    </Button>
+                            Command="{Binding RestartServerCommand}"/>
                     <Button Grid.Column="4"
                             Background="#ff0000"
                             Foreground="#ffffff"
@@ -114,22 +100,20 @@
                             Content="STOP"
                             FontSize="10"
                             Name="btnStop"
-                            Click="btnStop_Click">
-
-                    </Button>
+                            Command="{Binding StopServerCommand}"/>
                 </Grid>
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60*"></RowDefinition>
-                <RowDefinition Height="40*" MaxHeight="512"></RowDefinition>
+                <RowDefinition Height="60*"/>
+                <RowDefinition Height="40*" MaxHeight="512"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0"
                   Margin="16 0 16 8">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="95*"></RowDefinition>
-                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="95*"/>
+                    <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer Grid.Row="0"
                               VerticalScrollBarVisibility="Auto"
@@ -139,8 +123,7 @@
                                Padding="16"
                                Text="[05.12.2022 / 00:09] [Error] While thryingg int.Parse(Double);"
                                TextWrapping="Wrap"
-                               Name="txtconsole">
-                    </TextBlock>
+                               Name="txtconsole"/>
                 </ScrollViewer>
                 <Grid Grid.Row="1">
                     <TextBox Background="#4d4d4d"
@@ -149,32 +132,28 @@
                              VerticalAlignment="Center"
                              FontSize="9"
                              Name="txtbconsoleinput"
-                             Height="12">
-
-                    </TextBox>
+                             Height="12"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1"
                   Margin="16 8 16 16">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0"
                       Background="#141413"
                       Margin="0 0 8 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="15*"></RowDefinition>
-                        <RowDefinition Height="75*"></RowDefinition>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="75*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0"
                           Background="#090909">
                         <TextBlock Foreground="#b2b2b2"
                                    Text="RAM Usage:"
                                    TextAlignment="Center"
-                                   VerticalAlignment="Center">
-
-                        </TextBlock>
+                                   VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <lvc:CartesianChart Series="{Binding Series}"
@@ -182,25 +161,22 @@
                                             YAxes="{Binding YAxes}"
                                             ZoomMode="X"
                                             EasingFunction="{Binding Source={x:Static lvcore:EasingFunctions.BounceOut}}"
-                                            AnimationsSpeed="00:00:01">
-                        </lvc:CartesianChart>
+                                            AnimationsSpeed="00:00:01"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Column="1"
                       Background="#141413"
                       Margin="8 0 0 0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="15*"></RowDefinition>
-                        <RowDefinition Height="75*"></RowDefinition>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="75*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0"
                           Background="#090909">
                         <TextBlock Foreground="#b2b2b2"
                                    Text="CPU Usage:"
                                    TextAlignment="Center"
-                                   VerticalAlignment="Center">
-
-                        </TextBlock>
+                                   VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Row="1">
                         <lvc:CartesianChart Series="{Binding Series}"
@@ -208,8 +184,7 @@
                                             YAxes="{Binding YAxes}"
                                             ZoomMode="X"
                                             EasingFunction="{Binding Source={x:Static lvcore:EasingFunctions.BounceOut}}"
-                                            AnimationsSpeed="00:00:01">
-                        </lvc:CartesianChart>
+                                            AnimationsSpeed="00:00:01"/>
                     </Grid>
                 </Grid>
             </Grid>

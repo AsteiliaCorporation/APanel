@@ -9,19 +9,19 @@
              Margin="16 32">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="24"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="24"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <ItemsControl Grid.Row="0"
                       Margin="128 0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="📁 /home"
                         Command="{Binding ReturnHomeCommand}"
@@ -30,8 +30,7 @@
                         Foreground="#ffffff"
                         Background="Transparent"
                         BorderThickness="0"
-                        Grid.Column="0">
-                </Button>
+                        Grid.Column="0"/>
                 <Button Content="/plugins"
                         Command="{Binding ReturnHomeCommand}"
                         DockPanel.Dock="Bottom"
@@ -39,8 +38,7 @@
                         Foreground="#ffffff"
                         Background="Transparent"
                         BorderThickness="0"
-                        Grid.Column="1">
-                </Button>
+                        Grid.Column="1"/>
             </Grid>
         </ItemsControl>
         <ItemsControl ItemsSource="{Binding Data}"
@@ -59,37 +57,61 @@
                                 Padding="16 0"
                                 Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                 CommandParameter="{Binding}">
+                            <Button.ToolTip>
+                                <ToolTip Width="Auto"
+                                         Height="Auto"
+                                         Background="#4d4d4d"
+                                         Foreground="#ffffff">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0"
+                                                   Text="{Binding CreationTime}"/>
+                                        <TextBlock Grid.Row="1"
+                                                   Text="{Binding ToolTipSize}"/>
+                                        <TextBlock Grid.Row="2"
+                                                   Text="{Binding Folders}"
+                                                   Visibility="{Binding DirectoryInformationVisibility}"/>
+                                        <TextBlock Grid.Row="3"
+                                                   Text="{Binding Files}"
+                                                   Visibility="{Binding DirectoryInformationVisibility}"/>
+                                        <TextBlock Grid.Row="2"
+                                                   Text="{Binding FileExtension}"
+                                                   Visibility="{Binding FileInformationVisibility}"/>
+                                    </Grid>
+                                </ToolTip>
+                            </Button.ToolTip>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="24"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition Width="24"></ColumnDefinition>
+                                    <ColumnDefinition Width="24"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="24"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
                                            Text="{Binding Icon}"
                                            Foreground="#ffffff"
-                                           VerticalAlignment="Center">
-                                </TextBlock>
+                                           VerticalAlignment="Center"/>
                                 <TextBlock Grid.Column="1"
                                            Text="{Binding Name}"
                                            Foreground="#ffffff"
-                                           VerticalAlignment="Center">
-                                </TextBlock>
+                                           VerticalAlignment="Center"/>
                                 <TextBlock Grid.Column="3"
                                            Text="{Binding Size}"
                                            Foreground="#ffffff"
                                            VerticalAlignment="Center"
-                                           TextAlignment="Right">
-                                </TextBlock>
+                                           TextAlignment="Right"/>
                                 <TextBlock Grid.Column="4"
                                            Text="{Binding ModificationTime}"
                                            Foreground="#ffffff"
                                            VerticalAlignment="Center"
-                                           TextAlignment="Center">
-                                </TextBlock>
+                                           TextAlignment="Center"/>
                                 <Button Grid.Column="5"
                                         Width="64"
                                         Height="28"
@@ -100,8 +122,19 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
                                         Command="{Binding DataContext.MoreCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                        CommandParameter="{Binding}">
-                                </Button>
+                                        CommandParameter="{Binding}"/>
+                                <Popup Width="500" Height="350" IsOpen="false" Placement="MousePoint">
+                                    <Grid>
+                                        <Button Foreground="#ffffff"
+                                                Content="TEST"/>
+                                        <Button Foreground="#ffffff"
+                                                Content="TEST"/>
+                                        <Button Foreground="#ffffff"
+                                                Content="TEST"/>
+                                        <Button Foreground="#ffffff"
+                                                Content="TEST"/>
+                                    </Grid>
+                                </Popup>
                             </Grid>
                         </Button>
                     </Border>

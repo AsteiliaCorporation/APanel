@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace APanel.MVVM.ViewModel
 {
-    internal class MainViewModel
+    internal class MainViewModel : INotifyPropertyChanged
     {
         public PrimaryViewModel primaryVM;
         public ConsoleViewModel consoleVM;
@@ -18,6 +20,8 @@ namespace APanel.MVVM.ViewModel
         public NetworkViewModel networkVM;
         public StartupViewModel startupVM;
         public SettingsViewModel settingsVM;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public MainViewModel()
         {
@@ -31,6 +35,11 @@ namespace APanel.MVVM.ViewModel
             networkVM = new NetworkViewModel();
             startupVM = new StartupViewModel();
             settingsVM = new SettingsViewModel();
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

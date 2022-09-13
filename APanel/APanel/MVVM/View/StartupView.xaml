@@ -7,6 +7,93 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1"
+              Margin="128 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="48"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  Background="Red">
+                <TextBlock Text="STARTUP COMMAND"
+                           Foreground="#ffffff"
+                           VerticalAlignment="Center"
+                           Padding="8 0"/>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Background="DarkRed">
+                <TextBox Text="java -Xms128M -Xmx512M -jar server.jar"
+                         Foreground="#ffffff"
+                         Background="Red"
+                         VerticalAlignment="Center"
+                         Margin="8"
+                         Padding="8 2 0 2"
+                         BorderThickness="0"
+                         Name="txtbStartupCommand"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3"
+              Margin="128 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="24"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="64"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
+                      Background="Red">
+                    <TextBlock Text="SERVER JARFILE"
+                           Foreground="#ffffff"
+                           VerticalAlignment="Center"
+                           Padding="8 0"/>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Background="DarkRed">
+                    <TextBox Text="server.jar"
+                             Foreground="#ffffff"
+                             Background="Red"
+                             VerticalAlignment="Center"
+                             Margin="8"
+                             Padding="8 2 0 2"
+                             BorderThickness="0"
+                             Name="txtbServerJarFileName"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="64"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"
+                      Background="Red">
+                    <TextBlock Text="SERVER VERSION"
+                               Foreground="#ffffff"
+                               VerticalAlignment="Center"
+                               Padding="8 0"/>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Background="DarkRed">
+                    <TextBox Text="1.19.2"
+                             Foreground="#ffffff"
+                             Background="Red"
+                             VerticalAlignment="Center"
+                             Margin="8"
+                             Padding="8 2 0 2"
+                             BorderThickness="0"
+                             Name="txtbServerVersion"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

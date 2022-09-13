@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace APanel.MVVM.ViewModel
@@ -41,10 +42,16 @@ namespace APanel.MVVM.ViewModel
             {
                 Data.Add(new FileManagerData()
                 {
+                    DirectoryInformationVisibility = Visibility.Visible,
+                    FileInformationVisibility = Visibility.Collapsed,
                     Icon = "📁",
                     Name = item.Name,
                     Size = null,
+                    ToolTipSize = $"Size: {item.EnumerateFiles("*", SearchOption.AllDirectories).Sum(x => x.Length)} Bytes",
+                    CreationTime = $"Date created: {item.CreationTime}",
                     ModificationTime = item.LastAccessTime.ToString(),
+                    Folders = $"Folders: {string.Join(", ", Directory.GetDirectories(item.FullName)).Replace(item.FullName, "")}",
+                    Files = $"Files: {string.Join(", ", Directory.GetFiles(item.FullName)).Replace(item.FullName, "")}"
                 });
             }
 
@@ -54,10 +61,15 @@ namespace APanel.MVVM.ViewModel
             {
                 Data.Add(new FileManagerData()
                 {
+                    DirectoryInformationVisibility = Visibility.Collapsed,
+                    FileInformationVisibility = Visibility.Visible,
                     Icon = "📰",
                     Name = item.Name,
-                    Size = $"{item.Length.ToString()} Bytes",
+                    Size = $"{item.Length} Bytes",
+                    ToolTipSize = $"Size: {item.Length} Bytes",
+                    CreationTime = $"Date created: {item.CreationTime}",
                     ModificationTime = item.LastAccessTime.ToString(),
+                    FileExtension = $"File type: {item.Extension}"
                 });
             }
         }
@@ -75,10 +87,16 @@ namespace APanel.MVVM.ViewModel
                 return;
             }
 
-            Process process = new Process();
-            process.StartInfo.WorkingDirectory = currentPath + $"{data.Name}/";
-            process.StartInfo.FileName = Path.TrimEndingDirectorySeparator(currentPath + $"{data.Name}/");
-            process.StartInfo.UseShellExecute = true;
+            Process process = new Process()
+            {
+                StartInfo = new ProcessStartInfo()
+                {
+                    WorkingDirectory = currentPath + $"{data.Name}/",
+                    FileName = Path.TrimEndingDirectorySeparator(currentPath + $"{data.Name}/"),
+                    UseShellExecute = true
+                }
+            };
+
             process.Start();
         }
 
