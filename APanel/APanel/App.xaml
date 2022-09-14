@@ -2,39 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:APanel"
-             xmlns:v="clr-namespace:APanel.MVVM.View"
-             xmlns:vm="clr-namespace:APanel.MVVM.ViewModel"
-             StartupUri="MVVM/View/MainWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type vm:PrimaryViewModel}">
-            <v:PrimaryView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ConsoleViewModel}">
-            <v:ConsoleView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:FileManagerViewModel}">
-            <v:FileManagerView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:DatabasesViewModel}">
-            <v:DatabasesView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:SchedulesViewModel}">
-            <v:SchedulesView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:UsersViewModel}">
-            <v:UsersView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:BackupsViewModel}">
-            <v:BackupsView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:NetworkViewModel}">
-            <v:NetworkView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:StartupViewModel}">
-            <v:StartupView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
-            <v:SettingsView/>
-        </DataTemplate>
+         
     </Application.Resources>
 </Application>
