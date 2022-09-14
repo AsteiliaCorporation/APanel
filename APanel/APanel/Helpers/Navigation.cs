@@ -7,8 +7,26 @@ using System.Threading.Tasks;
 
 namespace APanel.Helpers
 {
-    internal class Navigation
+    public class Navigation
     {
-        public BaseViewModel? CurrentViewModel { get; set; }
-    }
+        public event Action? CurrentViewModelChanged;
+
+		private BaseViewModel? currentViewModel;
+
+		public BaseViewModel? CurrentViewModel
+		{
+			get => currentViewModel;
+			set
+			{
+				currentViewModel = value;
+
+				OnCurrentViewModelChanged();
+			}
+		}
+
+		private void OnCurrentViewModelChanged()
+        {
+			CurrentViewModelChanged?.Invoke();
+		}
+	}
 }

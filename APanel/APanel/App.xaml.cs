@@ -1,4 +1,5 @@
-﻿using APanel.ViewModels;
+﻿using APanel.Helpers;
+using APanel.ViewModels;
 using APanel.Views;
 using System;
 using System.Collections.Generic;
@@ -30,9 +31,12 @@ namespace APanel
             {
                 ForceSingleInstance();
 
+                Navigation navigation = new Navigation();
+                navigation.CurrentViewModel = new AuthenticationViewModel(navigation);
+
                 MainWindow = new MainView()
                 {
-                    DataContext = new MainViewModel()
+                    DataContext = new MainViewModel(navigation)
                 };
 
                 MainWindow.Show();

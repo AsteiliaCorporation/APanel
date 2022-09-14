@@ -7,18 +7,20 @@ using System.Windows.Input;
 
 namespace APanel.Commands
 {
-    internal class Command : ICommand
+    public abstract class Command : ICommand
     {
         public event EventHandler? CanExecuteChanged;
 
-        public bool CanExecute(object? parameter)
+        public virtual bool CanExecute(object? parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public void Execute(object? parameter)
+        public abstract void Execute(object? parameter);
+
+        protected void OnCanExecuteChanged()
         {
-            throw new NotImplementedException();
+            CanExecuteChanged?.Invoke(this, new EventArgs());
         }
     }
 }

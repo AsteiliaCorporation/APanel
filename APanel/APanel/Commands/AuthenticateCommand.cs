@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace APanel.Commands
 {
-    public class NavigateConsoleCommand : Command
+    public class AuthenticateCommand : Command
     {
         private readonly Navigation navigation;
 
-        public NavigateConsoleCommand(Navigation navigation)
+        public AuthenticateCommand(Navigation navigation)
         {
             this.navigation = navigation;
         }
 
         public override void Execute(object? parameter)
         {
-            navigation.CurrentViewModel = new ConsoleViewModel();
+            navigation.CurrentViewModel = new NavigationViewModel(navigation);
         }
     }
 }
