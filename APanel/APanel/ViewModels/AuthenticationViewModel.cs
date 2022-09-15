@@ -13,9 +13,9 @@ namespace APanel.ViewModels
     {
         public ICommand AuthenticateCommand { get; }
 
-        public AuthenticationViewModel(Navigation navigation)
+        public AuthenticationViewModel()
         {
-            AuthenticateCommand = new AuthenticateCommand(navigation);
+            AuthenticateCommand = new AuthenticateCommand();
         }
     }
 }

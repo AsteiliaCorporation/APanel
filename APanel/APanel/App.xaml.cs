@@ -1,5 +1,4 @@
-﻿using APanel.Helpers;
-using APanel.ViewModels;
+﻿using APanel.ViewModels;
 using APanel.Views;
 using System;
 using System.Collections.Generic;
@@ -23,7 +22,7 @@ namespace APanel
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            Current.ShutdownMode = ShutdownMode.OnExplicitShutdown;
 
             base.OnStartup(e);
 
@@ -31,12 +30,9 @@ namespace APanel
             {
                 ForceSingleInstance();
 
-                Navigation navigation = new Navigation();
-                navigation.CurrentViewModel = new AuthenticationViewModel(navigation);
-
-                MainWindow = new MainView()
+                MainWindow = new AuthenticationView()
                 {
-                    DataContext = new MainViewModel(navigation)
+                    DataContext = new AuthenticationViewModel()
                 };
 
                 MainWindow.Show();
@@ -54,7 +50,7 @@ namespace APanel
             try
             {
                 //http://connect.microsoft.com/VisualStudio/feedback/details/618027/uriformatexception-thrown-by-ms-internal-fontcache-util
-                System.Environment.SetEnvironmentVariable("windir", Environment.GetEnvironmentVariable("SystemRoot"));
+                Environment.SetEnvironmentVariable("windir", Environment.GetEnvironmentVariable("SystemRoot"));
 
                 // per http://msdn.microsoft.com/en-us/library/system.globalization.cultureinfo.ietflanguagetag(v=vs.110).aspx
 

@@ -8,9 +8,6 @@ namespace APanel.ViewModels
 {
     public class ConsoleViewModel : BaseViewModel
     {
-        public ConsoleViewModel()
-        {
 
-        }
     }
 }

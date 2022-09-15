@@ -7,13 +7,12 @@
         xmlns:v="clr-namespace:APanel.Views"
         mc:Ignorable="d"
         Title="APanel" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BackgroundBrush}"
+        Foreground="{StaticResource ForegroundBrush}">
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type vm:AuthenticationViewModel}">
-                    <v:AuthenticationView/>
-                </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:NavigationViewModel}">
                     <v:NavigationView/>
                 </DataTemplate>

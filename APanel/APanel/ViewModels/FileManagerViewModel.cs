@@ -8,9 +8,6 @@ namespace APanel.ViewModels
 {
     public class FileManagerViewModel : BaseViewModel
     {
-        public FileManagerViewModel()
-        {
 
-        }
     }
 }

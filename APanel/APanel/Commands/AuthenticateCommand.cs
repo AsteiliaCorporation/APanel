@@ -1,25 +1,28 @@
-﻿using APanel.Helpers;
-using APanel.ViewModels;
+﻿using APanel.ViewModels;
+using APanel.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace APanel.Commands
 {
     public class AuthenticateCommand : Command
     {
-        private readonly Navigation navigation;
-
-        public AuthenticateCommand(Navigation navigation)
+        public override async void Execute(object? parameter)
         {
-            this.navigation = navigation;
-        }
+            Window mainView = new MainView()
+            {
+                DataContext = new MainViewModel()
+            };
 
-        public override void Execute(object? parameter)
-        {
-            navigation.CurrentViewModel = new NavigationViewModel(navigation);
+            Application.Current.MainWindow.Close();
+
+            await Task.Delay(500);
+
+            mainView.Show();
         }
     }
 }

@@ -14,10 +14,22 @@ namespace APanel.ViewModels
         public ICommand NavigateConsoleCommand { get; }
         public ICommand NavigateFileManagerCommand { get; }
 
-        public NavigationViewModel(Navigation navigation)
+        private readonly Navigation navigation = new Navigation();
+
+        public NavigationViewModel()
         {
             NavigateConsoleCommand = new NavigateConsoleCommand(navigation);
             NavigateFileManagerCommand = new NavigateFileManagerCommand(navigation);
+            navigation.CurrentViewModel = new ConsoleViewModel();
+
+            navigation.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
+
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
+        }
+
+        public BaseViewModel? CurrentViewModel => navigation.CurrentViewModel;
     }
 }

@@ -9,33 +9,89 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="64"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="48"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"
-                   Text="NAVIGATION"
-                   TextAlignment="Center"
-                   FontSize="24"/>
-            <Grid Grid.Row="1">
+        <Grid Grid.Row="0"
+              Background="{StaticResource MenuBackgroundBrush}">
+            <Grid Margin="16 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0"
-                        Content="Console"
-                        Command="{Binding NavigateConsoleCommand}"/>
-                <Button Grid.Column="1"
-                        Content="File Manager"
-                        Command="{Binding NavigateFileManagerCommand}"/>
+                <TextBlock Text="APanel"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="24"
+                       FontWeight="DemiBold"/>
             </Grid>
         </Grid>
-        <ContentControl Grid.Row="1"
-                        Content="{Binding CurrentViewModel}">
+        <Grid Grid.Row="1" Margin="16 0 16 32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Content="Console"
+                    Background="{StaticResource ButtonBackgroundBrush}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    BorderThickness="0"
+                    Command="{Binding NavigateConsoleCommand}"/>
+            <Button Grid.Column="2"
+                    Content="File Manager"
+                    Background="{StaticResource ButtonBackgroundBrush}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    BorderThickness="0"
+                    Command="{Binding NavigateFileManagerCommand}"/>
+            <Button Grid.Column="4"
+                    Content="Console"
+                    Background="{StaticResource ButtonBackgroundBrush}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    BorderThickness="0"
+                    Command="{Binding NavigateConsoleCommand}"/>
+            <Button Grid.Column="6"
+                    Content="File Manager"
+                    Background="{StaticResource ButtonBackgroundBrush}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    BorderThickness="0"
+                    Command="{Binding NavigateFileManagerCommand}"/>
+            <Button Grid.Column="8"
+                    Content="Console"
+                    Background="{StaticResource ButtonBackgroundBrush}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    BorderThickness="0"
+                    Command="{Binding NavigateConsoleCommand}"/>
+            <Button Grid.Column="10"
+                    Content="File Manager"
+                    Background="{StaticResource ButtonBackgroundBrush}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    BorderThickness="0"
+                    Command="{Binding NavigateFileManagerCommand}"/>
+            <Button Grid.Column="12"
+                    Content="File Manager"
+                    Background="{StaticResource ButtonBackgroundBrush}"
+                    Foreground="{StaticResource ButtonForegroundBrush}"
+                    BorderThickness="0"
+                    Command="{Binding NavigateFileManagerCommand}"/>
+        </Grid>
+        <ContentControl Grid.Row="2"
+                        Content="{Binding CurrentViewModel}"
+                        Margin="16">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type vm:ConsoleViewModel}">
                     <v:ConsoleView/>
