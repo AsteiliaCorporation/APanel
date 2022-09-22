@@ -7,20 +7,42 @@ using System.Windows.Input;
 
 namespace APanel.Commands
 {
-    public abstract class Command : ICommand
+    public class Command : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
+        private readonly Action<object> _executeAction;
+        private readonly Predicate<object> _canExecuteAction;
 
-        public virtual bool CanExecute(object? parameter)
+        public Command(Action<object> executeAction)
         {
-            return true;
+            _executeAction = executeAction;
+            _canExecuteAction = null;
         }
 
-        public abstract void Execute(object? parameter);
-
-        protected void OnCanExecuteChanged()
+        public Command(Action<object> executeAction, Predicate<object> canExecuteAction)
         {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
+            _executeAction = executeAction;
+            _canExecuteAction = canExecuteAction;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            if (_canExecuteAction == null)
+            {
+                return true;
+            }
+
+            return _canExecuteAction(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            _canExecuteAction(parameter);
+        }
+
+        public event EventHandler? CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
     }
 }

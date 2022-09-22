@@ -9,16 +9,16 @@ namespace APanel.Helpers
 {
     public class Navigation
     {
-        public event Action? CurrentViewModelChanged;
+        public event Action CurrentViewModelChanged;
 
-		private BaseViewModel? currentViewModel;
+		private BaseViewModel _currentViewModel;
 
-		public BaseViewModel? CurrentViewModel
+		public BaseViewModel CurrentViewModel
 		{
-			get => currentViewModel;
+			get { return _currentViewModel; }
 			set
 			{
-				currentViewModel = value;
+				_currentViewModel = value;
 
 				OnCurrentViewModelChanged();
 			}

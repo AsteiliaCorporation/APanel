@@ -30,11 +30,7 @@ namespace APanel
             {
                 ForceSingleInstance();
 
-                MainWindow = new AuthenticationView()
-                {
-                    DataContext = new AuthenticationViewModel()
-                };
-
+                MainWindow = new AuthenticationView();
                 MainWindow.Show();
             }
             catch (ApplicationException applicationException)

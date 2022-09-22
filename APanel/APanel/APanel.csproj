@@ -10,11 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Commands\CreateAccountCommand.cs~RFee3f748.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Resources\Icons\APanel_Logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Resources\Locales\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.30" />
   </ItemGroup>
 
 </Project>
