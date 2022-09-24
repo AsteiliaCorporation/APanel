@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:APanel.ViewModels"
-        xmlns:local="clr-namespace:APanel.Views" xmlns:controls="clr-namespace:APanel.Resources.Controls"
+        xmlns:controls="clr-namespace:APanel.Resources.Controls"
         mc:Ignorable="d"
         Title="Register" Height="760" Width="675"
         WindowStartupLocation="CenterScreen"
@@ -61,37 +61,53 @@
         </Grid>
         <Grid Grid.Row="3">
             <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="16"/>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="16"/>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="16"/>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
-                <RowDefinition Height="16"/>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0"
+            <TextBlock Grid.Row="0"
+                       Text="Username"
+                       VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1"
                      Background="Transparent"
-                     Text="{Binding Username}"
+                     Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      VerticalContentAlignment="Center"
                      Foreground="{StaticResource ForegroundBrush}"
                      Padding="8 0"
                      FontSize="16"
                      Name="txtbUsername"/>
-            <TextBox Grid.Row="2"
+            <TextBlock Grid.Row="3"
+                       Text="Email"
+                       VerticalAlignment="Center"/>
+            <TextBox Grid.Row="4"
                      Background="Transparent"
-                     Text="{Binding Email}"
+                     Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      VerticalContentAlignment="Center"
                      Foreground="{StaticResource ForegroundBrush}"
                      Padding="8 0"
                      FontSize="16"
                      Name="txtbEmail"/>
-            <controls:APasswordBox Grid.Row="4"
-                                   Password="{Binding Password}"/>
-            <controls:APasswordBox Grid.Row="6"
-                                   Password="{Binding PasswordRepeat}"/>
-            <Button Grid.Row="8"
+            <TextBlock Grid.Row="6"
+                       Text="Password"
+                       VerticalAlignment="Center"/>
+            <controls:APasswordBox Grid.Row="7"
+                                   Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Grid.Row="9"
+                       Text="Confirm Password"
+                       VerticalAlignment="Center"/>
+            <controls:APasswordBox Grid.Row="10"
+                                   Password="{Binding PasswordRepeat, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Grid.Row="12"
                     Content="CREATE ACCOUNT"
                     Background="{StaticResource ButtonBackgroundBrush}"
                     Foreground="{StaticResource ButtonForegroundBrush}"

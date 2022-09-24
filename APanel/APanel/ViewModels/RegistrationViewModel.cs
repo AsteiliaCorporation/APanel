@@ -1,4 +1,6 @@
-﻿using APanel.Commands;
+﻿using APanel.Authentication;
+using APanel.Commands;
+using APanel.Databases;
 using APanel.Views;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,9 @@ namespace APanel.ViewModels
 {
     internal class RegistrationViewModel : BaseViewModel
     {
-        public ICommand RegisterCommand { get; }
-        public ICommand SignInCommand { get; }
+        private IUserDatabase userDatabase;
+        private ICommand _registerCommand;
+        private ICommand _signInCommand;
 
         private string _username;
         private string _email;
@@ -22,24 +25,19 @@ namespace APanel.ViewModels
 
         public RegistrationViewModel()
         {
+            userDatabase = new UserDatabase();
             RegisterCommand = new Command(ExecuteRegisterCommand, CanExecuteRegisterCommand);
             SignInCommand = new Command(ExecuteSignInCommand);
         }
 
-        private bool CanExecuteRegisterCommand(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ExecuteRegisterCommand(object obj)
         {
-            throw new NotImplementedException();
+            userDatabase.Add(new User(Username, Password, Email));
         }
 
         private async void ExecuteSignInCommand(object obj)
         {
             Application.Current.MainWindow.Close();
-
             Application.Current.MainWindow = new AuthenticationView();
 
             await Task.Delay(500);
@@ -47,10 +45,52 @@ namespace APanel.ViewModels
             Application.Current.MainWindow.Show();
         }
 
+        private bool CanExecuteRegisterCommand(object obj)
+        {
+            if (string.IsNullOrWhiteSpace(Username))
+            {
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(Password))
+            {
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(PasswordRepeat))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public ICommand RegisterCommand
+        {
+            get { return _registerCommand; }
+            private set
+            {
+                _registerCommand = value; 
+            }
+        }
+
+        public ICommand SignInCommand
+        {
+            get { return _signInCommand; }
+            private set
+            {
+                _signInCommand = value;
+            }
+        }
+
         public string Username
         {
             get { return _username; }
-
             set
             {
                 _username = value;
@@ -84,7 +124,6 @@ namespace APanel.ViewModels
         public string PasswordRepeat
         {
             get { return _passwordRepeat; }
-
             set
             {
                 _passwordRepeat = value;

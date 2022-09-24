@@ -27,11 +27,10 @@ namespace APanel.Resources.Controls
             get { return (string)GetValue(PasswordProperty); }
             set { SetValue(PasswordProperty, value); }
         }
+
         public APasswordBox()
         {
             InitializeComponent();
-
-            txtbPassword.PasswordChanged += OnPasswordChanged;
         }
 
         private void OnPasswordChanged(object sender, RoutedEventArgs e)

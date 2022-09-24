@@ -19,7 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
             <RowDefinition Height="32"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="32"/>
             <RowDefinition/>
@@ -72,22 +72,44 @@
         </Grid>
         <Grid Grid.Row="3">
             <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="16"/>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
-                <RowDefinition Height="16"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="48"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0"
+            <TextBlock Grid.Row="0"
+                       VerticalAlignment="Center"
+                       Text="Username"/>
+            <TextBox Grid.Row="1"
                      Background="Transparent"
                      Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      VerticalContentAlignment="Center"
                      Foreground="{StaticResource ForegroundBrush}"
                      Padding="8 0"
                      FontSize="16"/>
-            <controls:APasswordBox Grid.Row="2"
+            <TextBlock Grid.Row="2"
+                       Padding="0 2"
+                       Height="24"
+                       Visibility="{Binding UsernameErrorVisibility}"
+                       Foreground="Red"
+                       Text="{Binding UsernameError, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Grid.Row="4"
+                       VerticalAlignment="Center"
+                       Text="Password"/>
+            <controls:APasswordBox Grid.Row="5"
                                    Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Grid.Row="4"
+            <TextBlock Grid.Row="6"
+                       Padding="0 2"
+                       Height="24"
+                       Visibility="{Binding PasswordErrorVisibility}"
+                       Foreground="Red"
+                       Text="{Binding PasswordError, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Grid.Row="8"
                     Content="LOG IN"
                     Background="{StaticResource ButtonBackgroundBrush}"
                     Foreground="{StaticResource ButtonForegroundBrush}"

@@ -50,6 +50,11 @@ namespace APanel.Authentication
 					throw new ArgumentOutOfRangeException("Username", "Username length must be between 2-32 characters!");
 				}
 
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentOutOfRangeException("Username", "Username CANNOT be whitespace!");
+                }
+
 				_username = value;
 			}
 		}

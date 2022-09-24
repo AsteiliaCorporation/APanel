@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 
-namespace APanel.Database
+namespace APanel.Databases
 {
-    internal class Database
+    internal abstract class Database
     {
         private MySqlConnection _connection;
 
@@ -16,17 +17,17 @@ namespace APanel.Database
         private string _database = "apanel";
         private string _username = "root";
         private string _password = "";
-        
+
         public Database()
         {
-            _connection = new MySqlConnection($"SERVER={_server};DATABASE={_database};UID={_username};PASSWORD={_password};");
+            Connection = new MySqlConnection($"SERVER={_server};DATABASE={_database};UID={_username};PASSWORD={_password};SSLMODE=Preferred");
         }
 
-        public bool Connect()
+        protected bool Connect()
         {
             try
             {
-                _connection.Open();
+                Connection.Open();
 
                 return true;
             }
@@ -40,17 +41,20 @@ namespace APanel.Database
                     case 1045:
                         MessageBox.Show("Invalid username/password, please try again");
                         break;
+                    default:
+                        MessageBox.Show("Unknown error!");
+                        break;
                 }
 
                 return false;
             }
         }
 
-        private bool Disconnect()
+        protected bool Disconnect()
         {
             try
             {
-                _connection.Close();
+                Connection.Close();
 
                 return true;
             }
@@ -62,15 +66,15 @@ namespace APanel.Database
             }
         }
 
-        public void Insert()
+        public void Insert(string table, string specificTables, string values)
         {
-            string query = $"INSERT INTO users (username, password) VALUES('Suat Alikoch', '17')";
+            string query = $"INSERT INTO {table} ({specificTables}) VALUES({values})";
 
             if (Connect())
             {
-                MySqlCommand command = new MySqlCommand(query, _connection);
+                MySqlCommand command = new MySqlCommand(query, Connection);
 
-                command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
                 Disconnect();
             }
         }
@@ -81,7 +85,7 @@ namespace APanel.Database
 
             if (Connect())
             {
-                MySqlCommand command = new MySqlCommand(query, _connection);
+                MySqlCommand command = new MySqlCommand(query, Connection);
 
                 command.ExecuteNonQuery();
                 Disconnect();
@@ -94,16 +98,32 @@ namespace APanel.Database
 
             if (Connect())
             {
-                MySqlCommand command = new MySqlCommand(query, _connection);
+                MySqlCommand command = new MySqlCommand(query, Connection);
 
                 command.ExecuteNonQuery();
                 Disconnect();
             }
         }
 
-        public List<string>[]? Select()
+        public bool Select(string table, string columnItem, string value, string columnItem2, string value2)
         {
-            return default;
+            string query = $"SELECT * FROM {table} WHERE {columnItem}='{value}' AND {columnItem2}='{value2}'";
+
+            List<string> result = new List<string>();
+
+            if (Connect())
+            {
+                MySqlCommand command = new MySqlCommand(query, Connection);
+
+                if (command.ExecuteScalar() == null)
+                {
+                    return false;
+                }
+
+                Disconnect();
+            }
+
+            return true;
         }
 
         public int Count()
@@ -119,6 +139,12 @@ namespace APanel.Database
         public void Restore()
         {
 
+        }
+
+        protected MySqlConnection Connection 
+        { 
+            get => _connection;
+            private set => _connection = value; 
         }
     }
 }

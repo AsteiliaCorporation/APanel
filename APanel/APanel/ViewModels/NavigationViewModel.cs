@@ -11,8 +11,8 @@ namespace APanel.ViewModels
 {
     internal class NavigationViewModel : BaseViewModel
     {
-        public ICommand NavigateConsoleCommand { get; }
-        public ICommand NavigateFileManagerCommand { get; }
+        private ICommand _navigateConsoleCommand;
+        private ICommand _navigateFileManagerCommand;
 
         private readonly Navigation navigation = new Navigation();
 
@@ -25,24 +25,9 @@ namespace APanel.ViewModels
             navigation.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
 
-        private bool CanExecuteNavigateFileManagerCommand(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ExecuteNavigateFileManagerCommand(object obj)
         {
             navigation.CurrentViewModel = new FileManagerViewModel();
-        }
-
-        private bool CanExecuteNavigateConsoleCommand(object obj)
-        {
-            if (Equals(CurrentViewModel.GetType, consoleViewModel.GetType))
-            {
-                return false;
-            }
-
-            return true;
         }
 
         private void ExecuteNavigateConsoleCommand(object obj)
@@ -50,13 +35,36 @@ namespace APanel.ViewModels
             navigation.CurrentViewModel = new ConsoleViewModel();
         }
 
+        private bool CanExecuteNavigateFileManagerCommand(object obj)
+        {
+            return true;
+        }
+
+        private bool CanExecuteNavigateConsoleCommand(object obj)
+        {
+            return true;
+        }
+
         private void OnCurrentViewModelChanged()
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
 
-        public BaseViewModel CurrentViewModel => navigation.CurrentViewModel;
+        public ICommand NavigateConsoleCommand
+        {
+            get => _navigateConsoleCommand;
+            private set => _navigateConsoleCommand = value;
+        }
 
-        private ConsoleViewModel consoleViewModel;
+        public ICommand NavigateFileManagerCommand
+        {
+            get => _navigateFileManagerCommand;
+            private set => _navigateFileManagerCommand = value;
+        }
+
+        public BaseViewModel CurrentViewModel
+        {
+            get => navigation.CurrentViewModel;
+        }
     }
 }

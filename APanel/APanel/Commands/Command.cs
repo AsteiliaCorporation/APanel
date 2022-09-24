@@ -36,7 +36,7 @@ namespace APanel.Commands
 
         public void Execute(object parameter)
         {
-            _canExecuteAction(parameter);
+            _executeAction(parameter);
         }
 
         public event EventHandler? CanExecuteChanged
